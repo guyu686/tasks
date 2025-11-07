@@ -2,7 +2,7 @@
 
 [git下载，配置及上传文件](#git下载，配置及上传文件)
 
-[git提交问题](#git提交问题)
+[git提交问题及优化](#git提交问题及优化)
 
 [git指令积累](#git指令积累)
 
@@ -128,5 +128,6 @@
 - git config --global user.name "姓名"：设置全局用户名。
 - git config --global user.email "邮箱"：设置全局邮箱
 - git config --list：查看当前配置
+
 
 
