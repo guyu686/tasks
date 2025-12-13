@@ -2,7 +2,7 @@
 
 [hello](https://github.com/guyu686/tasks/blob/main/hello.md)
 
-[GitHub学习笔记](https://github.com/guyu686/tasks/blob/main/GitHub%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md)
+[GitHub学习笔记](https://github.com/guyu686/tasks/blob/main/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/GitHub%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md)
 
 [markdown学习笔记](https://github.com/guyu686/tasks/blob/main/markdown%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md)
 
@@ -25,6 +25,7 @@
 [招新网站复刻](https://guyu686.github.io/tasks/%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5/)
 
 [招新网站编后感](https://github.com/guyu686/tasks/blob/main/%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5/%E7%BC%96%E5%90%8E%E6%84%9F.md)
+
 
 
 
