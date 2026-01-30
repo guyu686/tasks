@@ -31,11 +31,12 @@
 [招新网站编后感](https://github.com/guyu686/tasks/blob/main/%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5/%E7%BC%96%E5%90%8E%E6%84%9F.md)
 
 ## 新网页
-[风花雪月](https://guyu686.github.io/tasks/blob/main/code2/)
+[风花雪月](https://guyu686.github.io/tasks/code2/)
 
 ## 其他
 
 [问题解决记录](https://github.com/guyu686/tasks/blob/main/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95.md)
+
 
 
 
