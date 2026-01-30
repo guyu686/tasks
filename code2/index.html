@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我在风花雪月里等你</title>
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0; /* 清除默认外边距 */
+            padding: 0; /* 清除默认内边距 */
+            box-sizing: border-box; /* 盒子模型设置为border-box */
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; /* 设置字体 */
+            line-height: 1.6; /* 设置行高 */
+            color: #333; /* 设置文字颜色 */
+            background-color: #f9f7f2; /* 设置背景颜色 */
+        }
+        
+        /* 容器样式 */
+        .container {
+            width: 90%; /* 设置容器宽度 */
+            max-width: 1200px; /* 设置最大宽度 */
+            margin: 0 auto; /* 水平居中 */
+            padding: 0 15px; /* 设置内边距 */
+        }
+        
+        /* 标题样式 */
+        .gradient-text1{
+            color: #3da9ec; /* 设置主标题颜色 */
+            margin-bottom: 10px; /* 设置底部外边距 */
+            background: linear-gradient(45deg,#667eea,#764ba2,#45b7d1); /* 渐变背景 */
+            -webkit-background-clip: text; /* 背景裁剪为文字 */
+            color: transparent; /* 设置文字颜色为透明 */
+            display: inline-block;/* 设置为行内块元素 */
+            text-align: center; /* 标题居中 */
+        } 
+        
+        h2{
+            margin-bottom: 30px; /* 设置底部外边距 */
+            font-size: 2.5rem; /* 设置字体大小 */
+        }
+        
+        h1, h3 {
+            color: #2c6c8c; /* 设置标题颜色 */
+            margin-bottom: 20px; /* 设置底部外边距 */
+        }
+        
+        /* 头部样式 */
+        header {
+            background: linear-gradient(rgba(44, 108, 140, 0.9), rgba(44, 108, 140, 0.8)); /* 设置背景渐变和图片 */
+            background-size: cover; /* 背景图片覆盖整个区域 */
+            background-position: center; /* 背景图片居中 */
+            color: white; /* 文字颜色为白色 */
+            padding: 60px 0; /* 设置上下内边距 */
+            text-align: center; /* 文字居中 */
+        }
+        
+        /* 主标题样式 */
+        .main-title {
+            font-size: 3rem; /* 设置字体大小 */
+            margin-bottom: 10px; /* 设置底部外边距 */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* 添加文字阴影 */
+            background: linear-gradient(45deg,#43e97b,#38f9d7,#45b7d1); /* 渐变背景 */
+            -webkit-background-clip: text; /* 背景裁剪为文字 */
+            color: transparent; /* 设置文字颜色为透明 */
+            display: inline-block;/* 设置为行内块元素 */
+            text-align: center; /* 标题居中 */
+        }
+        
+        /* 副标题样式 */
+        .subtitle {
+            font-size: 1.2rem; /* 设置字体大小 */
+            max-width: 800px; /* 设置最大宽度 */
+            margin: 0 auto; /* 水平居中 */
+        }
+        
+        /* 导航栏样式 */
+        nav {
+            background-color: #2c6c8c; /* 设置背景颜色 */
+            position: sticky; /* 设置为粘性定位 */
+            top: 0; /* 距离顶部0 */
+            z-index: 1000; /* 设置层级 */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+        }
+        
+        /* 导航栏列表样式 */
+        .nav-list {
+            display: flex; /* 设置为弹性布局 */
+            justify-content: center; /* 水平居中 */
+            list-style: none; /* 去除列表样式 */
+        }
+        
+        /* 导航项样式 */
+        .nav-item {
+            margin: 0; /* 清除外边距 */
+        }
+        
+        /* 导航链接样式 */
+        .nav-link {
+            display: block; /* 设置为块级元素 */
+            color: white; /* 文字颜色为白色 */
+            text-decoration: none; /* 去除下划线 */
+            padding: 15px 25px; /* 设置内边距 */
+            transition: all 0.3s ease; /* 添加过渡效果 */
+        }
+        
+        /* 导航链接悬停样式 */
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* 悬停时背景色变化 */
+        }
+        
+        /* 活动导航链接样式 */
+        .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.3); /* 活动状态背景色 */
+            font-weight: bold; /* 字体加粗 */
+        }
+        
+        /* 主要内容区域样式 */
+        main {
+            padding: 40px 0; /* 设置上下内边距 */
+        }
+        
+        
+        /* 景点网格样式 */
+        .attractions-grid {
+            display: grid; /* 设置为网格布局 */
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 设置列宽 */
+            gap: 30px; /* 设置网格间距 */
+        }
+        
+        /* 景点卡片样式 */
+        .attraction-card {
+            border-radius: 10px; /* 设置圆角 */
+            overflow: hidden; /* 隐藏溢出内容 */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* 添加过渡效果 */
+        }
+        
+        /* 景点卡片悬停样式 */
+        .attraction-card:hover {
+            transform: translateY(-10px); /* 悬停时上移 */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* 悬停时阴影变化 */
+        }
+        
+        /* 景点图片样式 */
+        .attraction-img {
+            width: 100%; /* 宽度100% */
+            height: 200px; /* 固定高度 */
+            object-fit: cover; /* 图片覆盖整个区域 */
+        }
+        
+        /* 景点内容样式 */
+        .attraction-content {
+            padding: 20px; /* 设置内边距 */
+        }
+        
+        /* 景点标题样式 */
+        .attraction-title {
+            font-size: 1.4rem; /* 设置字体大小 */
+            margin-bottom: 10px; /* 设置底部外边距 */
+        }
+
+        /* 景点描述样式 */
+        .attraction-desc {
+            color: #666; /* 设置文字颜色 */
+            margin-bottom: 15px; /* 设置底部外边距 */
+        }
+        
+        /* 标签容器样式 */
+        .tags {
+            display: flex; /* 设置为弹性布局 */
+            flex-wrap: wrap; /* 允许换行 */
+            gap: 8px; /* 设置标签间距 */
+        }
+        
+        /* 单个标签样式 */
+        .tag {
+            background-color: #e6f2f8; /* 设置背景颜色 */
+            padding: 5px 12px; /* 设置内边距 */
+            border-radius: 20px; /* 设置圆角 */
+            font-size: 0.8rem; /* 设置字体大小 */
+        }
+        
+        
+    /* 地图容器样式 */
+    .map-container {
+        height: 800px; /* 固定高度 */
+        border-radius: 10px; /* 圆角 */
+        overflow: hidden; /* 隐藏溢出 */
+        margin-bottom: 20px; /* 底部边距 */
+    }
+
+    /* 地图盒子样式 */
+    .map-box
+    {
+        position: relative; /* 相对定位 */
+        width: 1150px; /* 宽度1150px */
+        height: 900px; /* 高度900px */
+    }
+        
+
+    /* 地图图片样式 */
+    .map-img {
+        width: 100%; /* 宽度100% */
+        height: 100%; /* 高度100% */
+        object-fit: cover; /* 图片覆盖整个区域 */
+        display: block; /* 块级显示 */
+    }
+
+    /* 地图标注点样式  */
+    .map-marker {
+        position: absolute; /* 绝对定位 */
+        transform: translate(-50%, -50%); /* 居中定位 */
+        cursor: pointer; /* 设为手型*/
+        z-index: 10; /* 确保标注点在图片上方 */
+    }
+
+    /* 标注点标签 */
+    .marker-dot {
+        width: 16px; /* 圆点宽度 */
+        height: 16px; /* 圆点高度 */
+        background-color: #e74c3c; /* 背景色 */
+        border-radius: 50%; /* 圆形 */
+        border: 3px solid white; /* 白色边框 */
+        transition: all 0.3s ease; /* 过渡效果 */
+        }
+
+    /* 标注点标签样式 */
+    .marker-label{
+        position: absolute; /* 绝对定位 */
+        top: 25px; /* 距离圆点下方 */
+        background-color: rgba(44, 108, 140, 0.95); /* 背景色 */
+        color: white; /* 文字颜色 */
+        padding: 6px 12px; /* 内边距 */
+        border-radius: 5px; /* 圆角 */
+        font-size: 0.9rem; /* 字体大小 */
+        opacity: 0; /* 初始透明 */
+        transition: opacity 0.3s ease; /* 过渡效果 */
+        z-index: 11; /* 确保标签在最上层 */
+    }
+
+    /* 标注点悬停效果 */
+    .map-marker:hover .marker-dot {
+        transform: scale(1.3); /* 悬停时放大 */
+        background-color: #c0392b; /* 悬停时颜色变化 */
+    }
+
+    .map-marker:hover .marker-label {
+        opacity: 1; /* 悬停时显示标签 */
+    }
+
+    /* 地图内容样式 */
+    .map-content {
+        display: none; /* 默认隐藏 */
+        width: 100%; /* 宽度100% */
+        height: 100%; /* 高度100% */
+    }
+
+    /* 活动地图内容样式 */
+    .map-content.active {
+        display: block; /* 活动地图显示 */
+    }
+
+
+    /* 轮播容器 */
+    .carousel {
+        width: 800px;
+        height: 500px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+        
+        /* 图片容器 */
+    .image-container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.5s ease;
+    }
+        
+    /* 单张图片 */
+    .image {
+        flex: 0 0 100%;
+        height: 100%;
+    }
+        
+    .image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* 按钮 */
+    .nav-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+        
+    .nav-button:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+        
+    .prev-button {
+        left: 10px;
+        border-radius: 0 25px 25px 0;
+    }
+        
+    .next-button {
+        right: 10px;
+        border-radius: 25px 0 0 25px;
+    }
+
+
+
+    
+      
+    /* 旅行提示网格样式 */
+    .tips-grid {
+        display: grid; /* 网格布局 */
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* 自动填充列 */
+        gap: 20px; /* 间距 */
+    }
+
+        /* 旅行提示项样式 */
+    .tip-item {
+        background-color: #f0f8ff; /* 背景色 */
+        padding: 20px; /* 内边距 */
+        border-radius: 10px; /* 圆角 */
+        border-left: 5px solid #2c6c8c; /* 左侧边框 */
+    }
+        
+        
+        /* 返回顶部按钮样式 */
+    .back-to-top {
+        position: fixed; /* 固定定位 */
+        bottom: 30px; /* 底部距离 */
+        right: 80px; /* 右侧距离 */
+        width: 50px; /* 宽度 */
+        height: 50px; /* 高度 */
+        background-color: #256585; /* 背景色 */
+        color: white; /* 文字颜色 */
+        border-radius: 50%; /* 圆形 */
+        font-size: 1.5rem; /* 字体大小 */
+        cursor: pointer; /* 变为手型 */
+        opacity: 0; /* 初始透明 */
+        transition: all 0.3s ease; /* 过渡效果 */
+        z-index: 100; /* 层级 */
+    }
+        
+        /* 显示返回顶部按钮样式 */
+    .back-to-top.show {
+        opacity: 0.8; /* 显示 */
+        visibility: visible; /* 可见 */
+    }
+
+        </style>
+</head>
+
+
+
+
+
+
+
+<body>
+    <!-- 头部区域 -->
+    <header>
+        <div class="container">
+            <h1 class="main-title">我在风花雪月里等你</h1>
+            <p class="subtitle">下关风，上关花，苍山雪，洱海月</p>
+        </div>
+    </header>
+    
+    <!-- 导航栏 -->
+    <nav>
+        <div class="container">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#map" class="nav-link active">景点地图</a></li>
+                <li class="nav-item"><a href="#attractions" class="nav-link">主要景点</a></li>
+                <li class="nav-item"><a href="#gallery" class="nav-link">美景欣赏</a></li>
+                <li class="nav-item"><a href="#tips" class="nav-link">亲测建议</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- 主要内容区域 -->
+    <main class="container">
+            
+            <!-- 景点地图部分 -->
+        <section id="map">
+            <h2 class="gradient-text1">大理景点分布地图</h2>
+            
+            <!-- 地图容器 -->
+            <div class="map-box">
+            <div class="map-container">
+                <!-- 旅游地图 -->
+                <div class="map-content active" id="touristMap">
+                    <img src="./fa01a6175d72454794129d40bba3cfba.jpeg" alt="大理旅游地图" class="map-img">
+                    <!-- 地图标注点 -->
+                    <div class="map-marker" style="top: 63%; left: 30%;" data-title="大理古城">
+                        <div class="marker-dot"></div>
+                        <a href="https://baike.baidu.com/item/%E5%A4%A7%E7%90%86%E5%8F%A4%E5%9F%8E/1874828" class="marker-label">大理古城</a>
+                    </div>
+                    <div class="map-marker" style="top: 40%; left: 50%;" data-title="洱海">
+                        <div class="marker-dot"></div>
+                        <a href="https://www.bilibili.com/video/BV1cK411R7Dj/?spm_id_from=333.337.search-card.all.click" class="marker-label">洱海</a>
+                    </div>
+                    <div class="map-marker" style="top: 80%; left: 30%;" data-title="苍山">
+                        <div class="marker-dot"></div>
+                        <a href="https://www.dlcsdzgy.cn/" class="marker-label">苍山</a>
+                    </div>
+                    <div class="map-marker" style="top: 20%; right: 30%;" data-title="双廊古镇">
+                        <div class="marker-dot"></div>
+                        <a href="https://baike.baidu.com/item/%E5%8F%8C%E5%BB%8A%E9%95%87/10094494" class="marker-label">双廊古镇</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+            
+            <!-- 景点网格 -->
+        <section id="attractions">
+            <h2 class="gradient-text1">主要景点</h2>
+            <div class="attractions-grid">
+                <!-- 景点卡片1：洱海 -->
+                <div class="attraction-card" data-category="nature">
+                    <img src="./IMG_2341.JPG" alt="洱海" class="attraction-img">
+                    <div class="attraction-content">
+                        <h3 class="attraction-title">洱海</h3>
+                        <p class="attraction-desc">大理"风花雪月"四景之一，形如耳朵，湖水清澈见底，被称为"群山间的无瑕美玉"。</p>
+                        <div class="tags">
+                            <span class="tag">自然风光</span>
+                            <span class="tag">湖泊</span>
+                            <span class="tag">拍照圣地</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 景点卡片2：崇圣寺三塔 -->
+                <div class="attraction-card" data-category="culture">
+                    <img src="./IMG_2342.JPG" alt="崇圣寺三塔" class="attraction-img">
+                    <div class="attraction-content">
+                        <h3 class="attraction-title">崇圣寺三塔</h3>
+                        <p class="attraction-desc">大理历史上规模最大的古刹，三塔由一大二小组成，是大理的标志性建筑。</p>
+                        <div class="tags">
+                            <span class="tag">文化古迹</span>
+                            <span class="tag">佛教寺庙</span>
+                            <span class="tag">历史建筑</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 景点卡片3：大理古城 -->
+                <div class="attraction-card" data-category="town">
+                    <img src="./IMG_2334.JPG" alt="大理古城" class="attraction-img">
+                    <div class="attraction-content">
+                        <h3 class="attraction-title">大理古城</h3>
+                        <p class="attraction-desc">始建于明洪武年间，古城保留着棋盘式格局，街道两旁店铺林立，充满白族风情。</p>
+                        <div class="tags">
+                            <span class="tag">古镇村落</span>
+                            <span class="tag">文化遗产</span>
+                            <span class="tag">购物美食</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 景点卡片4：苍山 -->
+                <div class="attraction-card" data-category="nature">
+                    <img src="./IMG_2343.JPG" alt="苍山" class="attraction-img">
+                    <div class="attraction-content">
+                        <h3 class="attraction-title">苍山</h3>
+                        <p class="attraction-desc">由十九座山峰组成，山顶积雪终年不化，是国家级自然保护区，有"苍山雪"之美誉。</p>
+                        <div class="tags">
+                            <span class="tag">自然风光</span>
+                            <span class="tag">山脉</span>
+                            <span class="tag">徒步登山</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 景点卡片5：双廊古镇 -->
+                <div class="attraction-card" data-category="town">
+                    <img src="./IMG_2344.JPG" alt="双廊古镇" class="attraction-img">
+                    <div class="attraction-content">
+                        <h3 class="attraction-title">双廊古镇</a></h3>
+                        <p class="attraction-desc">位于洱海东北岸，三面环山，一面临海，被誉为"苍洱风光第一镇"。</p>
+                        <div class="tags">
+                            <span class="tag">古镇村落</span>
+                            <span class="tag">渔村风情</span>
+                            <span class="tag">艺术小镇</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 景点卡片6：喜洲古镇 -->
+                <div class="attraction-card" data-category="town">
+                    <img src="./IMG_2345.JPG" alt="喜洲古镇" class="attraction-img">
+                    <div class="attraction-content">
+                        <h3 class="attraction-title">喜洲古镇</h3>
+                        <p class="attraction-desc">白族聚居地，保留了大量明清时期的白族民居，以独特的"三坊一照壁"建筑风格闻名。</p>
+                        <div class="tags">
+                            <span class="tag">古镇村落</span>
+                            <span class="tag">白族文化</span>
+                            <span class="tag">古建筑</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <section id="gallery">
+            <h2 class="gradient-text1">去有风的地方</h2>
+            <!-- 轮播容器 -->
+        <div class="carousel">
+            <!-- 图片容器 -->
+            <div class="image-container">
+            
+            <div class="image">
+                <img src="./IMG_2322.JPG">
+            </div>
+            <div class="image">
+                <img src="./IMG_2323.JPG">
+            </div>
+            <div class="image">
+                <img src="./IMG_2324.JPG" >
+            </div>
+            <div class="image">
+                <img src="./IMG_2325.JPG" >
+            </div>
+            <div class="image">
+                <img src="./IMG_2326.JPG">
+            </div>
+            <div class="image">
+                <img src="./IMG_2327.JPG">
+            </div>
+            <div class="image">
+                <img src="./IMG_2328.JPG">
+            </div>
+            <div class="image">
+                <img src="./IMG_2329.JPG">
+            </div>
+            <div class="image">
+                <img src="./IMG_2330.JPG">
+            </div>
+            <div class="image">
+                <img src="./IMG_2331.JPG">
+            </div>
+            <div class="image">
+                <img src="./IMG_2332.JPG">
+            </div>
+            <div class="image">
+                <img src="./IMG_2333.JPG">
+            </div>
+            <div class="image">
+                <img src="./IMG_2334.JPG">
+            </div>
+            <div class="image">
+                <img src="./IMG_2335.JPG">
+            </div>
+            <div class="image">
+                <img src="./IMG_2336.JPG">
+            </div>
+            <div class="image">
+                <img src="./IMG_2337.JPG">
+            </div>
+            <div class="image">
+                <img src="./IMG_2340.JPG">
+            </div>
+            <div class="image">
+                <img src="./IMG_2339.JPG">
+            </div>
+
+            </div>
+            <!-- 导航按钮 -->
+            <button class="nav-button prev-button">‹</button>
+            <button class="nav-button next-button">›</button>
+            </div>  
+    </section>
+                
+
+
+    <!-- 音乐播放 -->
+    <audio src="./M500003FZhzi4fmbQ5.mp3" control></audio>
+    
+    <!-- 更多控制选项--> 
+    <audio controls autoplay loop preload="auto">
+        <source src="./M500003FZhzi4fmbQ5.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- 控制-->
+    <audio id="myAudio" src="./M500003FZhzi4fmbQ5.mp3"></audio>
+    <div>
+        <button onclick="playAudio()">播放</button>
+        <button onclick="pauseAudio()">暂停</button>
+    </div>
+       
+       <!-- 旅行贴士部分 -->
+        <section id="tips">
+            <h2 class="gradient-text1">亲测建议</h2>
+            
+            <!-- 旅行贴士网格 -->
+            <div class="tips-grid">
+                <!-- 贴士1 -->
+                <div class="tip-item">
+                    <h3>最佳旅行时间</h3>
+                    <p>3-5月春季和9-11月秋季是最佳旅行时间，气候宜人，风景最美。</p>
+                </div>
+                
+                <!-- 贴士2 -->
+                <div class="tip-item">
+                    <h3>特色美食</h3>
+                    <p>一定要品尝大理砂锅鱼、乳扇、酸辣鱼、喜洲粑粑等白族特色美食。</p>
+                </div>
+                
+                <!-- 贴士3 -->
+                <div class="tip-item">
+                    <h3>住宿建议</h3>
+                    <p>大理古城和双廊有许多特色客栈，建议提前预订，尤其是旺季。</p>
+                </div>
+                
+                <!-- 贴士4 -->
+                <div class="tip-item">
+                    <h3>购物指南</h3>
+                    <p>可以购买扎染布、大理石工艺品、普洱茶等作为纪念品。</p>
+                </div>
+                
+                <!-- 贴士5 -->
+                <div class="tip-item">
+                    <h3>户外活动</h3>
+                    <p>苍山徒步、洱海骑行、乘坐游船是体验大理自然风光的最佳方式。</p>
+                </div>
+                
+                <!-- 贴士6 -->
+                <div class="tip-item">
+                    <h3>交通提示</h3>
+                    <p>别忘记和主播一样租辆车带上三五好友环洱海！</p>
+                </div>
+            </div>
+        </section>
+        <a href="#" class="back-to-top" id="back-to-top">↑</a>
+    </main>
+
+
+    <script>
+        // 获取DOM元素
+        const imageContainer = document.querySelector('.image-container'); // 图片容器
+        const prevButton = document.querySelector('.prev-button'); // 上一张按钮
+        const nextButton = document.querySelector('.next-button'); // 下一张按钮
+        const images = document.querySelectorAll('.image'); // 所有图片元素
+
+        // 当前图片索引
+        let currentIndex = 0;
+        
+        // 显示下一张图片
+        function showNextImage() {
+            // 如果已经是最后一张，回到第一张
+            if (currentIndex === images.length - 1) {
+                currentIndex = 0;
+            } else {
+                currentIndex++;
+            }
+            
+            // 更新图片容器位置
+            updateImagePosition();
+        }
+        
+        // 显示上一张图片
+        function showPrevImage() {
+            // 如果已经是第一张，跳到最后一张
+            if (currentIndex === 0) {
+                currentIndex = images.length - 1;
+            } else {
+                currentIndex--;
+            }
+            
+            // 更新图片容器位置
+            updateImagePosition();
+        }
+        
+        // 更新图片容器位置
+        function updateImagePosition() {
+            // 移动图片容器，显示当前图片
+            imageContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+        
+        // 添加按钮点击事件
+        prevButton.addEventListener('click', showPrevImage);
+        nextButton.addEventListener('click', showNextImage);
+        
+        // 初始显示第一张图片
+        updateImagePosition();
+
+
+
+        // 音频播放控制
+        const audio = document.getElementById('myAudio');
+        
+        function playAudio() {
+            audio.play();
+        }
+        
+        function pauseAudio() {
+            audio.pause();
+        }
+
+        // 返回顶部按钮功能
+        window.addEventListener('scroll', () => {
+            const backToTopButton = document.getElementById('back-to-top');
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
+
+                
